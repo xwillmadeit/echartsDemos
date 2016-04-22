@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src='echarts.min.js'></script>
+    </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main" style="width: 600px;height:400px;"></div>
+        <script type="text/javascript">
+                var chart = echarts.init(document.getElementById('main'));
+
+                var timeData = ['2009/6/12 2:00', '2009/6/12 3:00'];
+
+                var option = {
+                    title: {
+                        text: '堆叠区域图'
+                    },
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data:['搜索引擎']
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            boundaryGap : false,
+                            data : ['周一','周二','周三','周四','周五','周六','周日']
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'搜索引擎',
+                            type:'line',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top'
+                                }
+                            },
+                            areaStyle: {normal: {}}, //是否区域填充
+                            data:[820, 932, 901, 934, 1290, 1330, 1320]
+                        }
+                    ]
+                };
+
+                chart.setOption(option);
+        </script>
+    </body>
+</html>
